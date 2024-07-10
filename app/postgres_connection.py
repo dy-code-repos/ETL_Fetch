@@ -1,3 +1,4 @@
+import os
 import sys
 import psycopg2
 import configparser
@@ -6,7 +7,9 @@ class PostgresConnection:
     def __init__(self):
         # Read configuration from the 'config.ini' file
         config = configparser.ConfigParser()
-        config.read("config.ini")
+        thisfolder = os.path.dirname(os.path.abspath(__file__))
+        initfile = os.path.join(thisfolder, 'config.ini')
+        config.read(initfile)
 
         # Load PostgreSQL configuration parameters
         self.username = config.get("postgres", "username")

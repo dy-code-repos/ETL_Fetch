@@ -1,14 +1,18 @@
+import os
 import sys
 import boto3 
 import json
 import configparser
 
+ 
 class SQSUtility:
 
     def __init__(self):
         # Read configuration from the 'config.ini' file
         config = configparser.ConfigParser()
-        config.read('config.ini')
+        thisfolder = os.path.dirname(os.path.abspath(__file__))
+        initfile = os.path.join(thisfolder, 'config.ini')
+        config.read(initfile)
 
         # Load SQS configuration parameters
         self.endpoint_url = config.get('SQS', 'endpoint_url')
