@@ -28,7 +28,7 @@ class ETLProcess:
                 app_version = message["app_version"]
             except (json.JSONDecodeError, KeyError) as e:
                 # Handle missing or invalid data
-                print(f"Error processing message: {str(e)}")
+                print(f"key missing for a massage: {str(e)}")
                 continue
             # Encode IP and device ID, convert app version to integer
             message["ip"] = wrangling_utility.string_encode(ip)
@@ -59,12 +59,16 @@ def main():
     # Create an instance of ETLProcess
     etl_process = ETLProcess()
     # Extract data from SQS
+    print("----Extracting data from SQS----")
     messages = etl_process.extract_data()
     # Transform the extracted data
+    print("----Transforming the extracted data----")
     transformed_data = etl_process.transform_data(messages)
     # Load the transformed data into PostgreSQL
+    print("----Loading the transformed data into PostgreSQL----")
     etl_process.load_data(transformed_data)
     # Show the loaded data from PostgreSQL
+    print("----Showing the sample data from PostgreSQL----")
     etl_process.show_loaded_data(5)
 
 if __name__ == "__main__":
