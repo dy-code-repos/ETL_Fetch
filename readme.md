@@ -71,3 +71,18 @@ You can run `Setup.sh` to set up and run the project automatically:
    ```sh
    python app/etl_process.py
    ```
+## Code Structure
+
+- **etl_process.py**: Contains the main ETL logic.
+- **postgres_connection.py**: Handles the PostgreSQL database connection.
+- **sqs_utility.py**: Provides utility functions related to AWS SQS.
+- **wrangling_utility.py**: Includes additional utility functions for data wrangling.
+
+## Next Steps
+
+While this project provides a solid foundation, there are several ways to enhance it:
+
+1. **AWS Lambda**: improve the packaging of the project to deploy on Lambda, since AWS Lambda is a great fit for micro ETL processes due to its serverless nature.
+2. **Containerization**: Implement containerization using Docker and push it to the AWS registry to easily deploy it.
+4.  **Scaling**: Consider horizontal scaling for handling larger message volumes.
+5.  **Testing**: Write unit tests for each module to ensure reliability.
