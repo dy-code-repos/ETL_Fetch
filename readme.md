@@ -86,6 +86,9 @@ While this project provides a solid foundation, there are several ways to enhanc
 1. **AWS Lambda**: improve the packaging of the project to deploy on Lambda, since AWS Lambda is a great fit for micro ETL processes due to its serverless nature.
 2. **Containerization**: Implement containerization using Docker and push it to the AWS registry to easily deploy it.
 4.  **Scaling**: Consider horizontal scaling for handling larger message volumes.
-5.  **Testing**: Write unit tests for each module to ensure reliability.
+5.  **Testing**: Write unit tests for each module to ensure reliability, and test the app thoroughly.
 6.  **Error Handling**: Robust handling for network issues, invalid messages, and database failures.
 7.  **Logging**: Detailed logging for tracking execution.
+
+## Assumption and Discussion 
+Please find the **Discussion.md** file for answers to the questions asked
