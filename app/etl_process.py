@@ -47,7 +47,7 @@ class ETLProcess:
         # Retrieve and print the loaded data from PostgreSQL un-masking for easy read
         rows = self.pg_conn.print_user_logins_table(limit)
         print('\nPrinting TABLE: user_logins\n')
-        print('\n un-maskin ip and device id for viewing\n')
+        print('\n un-masking ip and device id for viewing\n')
         print('user_id | device_type | masked_ip | masked_device_id | locale | app_version | create_date')
         for row in rows:
             row = list(row)
