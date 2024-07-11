@@ -8,6 +8,13 @@ This project demonstrates an ETL (Extract, Transform, Load) process using AWS SQ
 - Git
 - Docker
 
+## Code Structure
+
+- **etl_process.py**: Contains the main ETL logic.
+- **postgres_connection.py**: Handles the PostgreSQL database connection.
+- **sqs_utility.py**: Provides utility functions related to AWS SQS.
+- **wrangling_utility.py**: Includes additional utility functions for data wrangling.
+
 ## Steps to Run
 
 ### Step 1: Clone the Repository
@@ -71,12 +78,6 @@ You can run `Setup.sh` to set up and run the project automatically:
    ```sh
    python app/etl_process.py
    ```
-## Code Structure
-
-- **etl_process.py**: Contains the main ETL logic.
-- **postgres_connection.py**: Handles the PostgreSQL database connection.
-- **sqs_utility.py**: Provides utility functions related to AWS SQS.
-- **wrangling_utility.py**: Includes additional utility functions for data wrangling.
 
 ## Next Steps
 
