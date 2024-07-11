@@ -24,7 +24,7 @@ def mask_ip(ip_address):
     # Join the octets with commas
     masked_ip = ','.join(octets)
     # Encode the masked IP in base64
-    return base64.b64encode(masked_ip.encode("utf-8")).decode("utf-8")
+    return masked_ip
 
 def unmask_ip(masked_ip):
     """
@@ -36,10 +36,9 @@ def unmask_ip(masked_ip):
     Returns:
     str: The original IP address.
     """
-    # Decode the base64 encoded masked IP
-    unmasked_ip = base64.b64decode(masked_ip).decode("utf-8")
+
     # Split the unmasked IP into octets
-    octets = unmasked_ip.split(',')
+    octets = masked_ip.split(',')
     # Reverse the modifications to the first and the last octets
     octets[0] = str(int(octets[0]) - rand_int)
     octets[-1] = str(int(octets[-1]) - (rand_int * 3))
@@ -69,7 +68,7 @@ def mask_device(device_id):
     # Join the segments with '#'
     masked_device = '#'.join(octets)
     # Encode the masked device ID in base64
-    return base64.b64encode(masked_device.encode("utf-8")).decode("utf-8")
+    return masked_device
 
 def unmask_device(device_id):
     """
@@ -81,10 +80,8 @@ def unmask_device(device_id):
     Returns:
     str: The original device ID.
     """
-    # Decode the base64 encoded masked device ID
-    unmasked_device = base64.b64decode(device_id).decode("utf-8")
     # Split the unmasked device ID into segments
-    octets = unmasked_device.split('#')
+    octets = device_id.split('#')
     # Reverse the modifications to the last and the second last segments
     octets[-1] = str(int(octets[-1]) - rand_int * 2)
     octets[-2] = str(int(octets[-2]) - rand_int - 4)
