@@ -87,5 +87,5 @@ While this project provides a solid foundation, there are several ways to enhanc
 2. **Containerization**: Implement containerization using Docker and push it to the AWS registry to easily deploy it.
 4.  **Scaling**: Consider horizontal scaling for handling larger message volumes.
 5.  **Testing**: Write unit tests for each module to ensure reliability.
-6.  **Error Handling**:: Robust handling for network issues, invalid messages, and database failures.
-7.  **:Logging**:: Detailed logging for tracking execution.
+6.  **Error Handling**: Robust handling for network issues, invalid messages, and database failures.
+7.  **Logging**: Detailed logging for tracking execution.
