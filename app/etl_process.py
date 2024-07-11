@@ -31,8 +31,8 @@ class ETLProcess:
                 print(f"key missing for a massage: {str(e)}")
                 continue
             # Encode IP and device ID, convert app version to integer
-            message["ip"] = wrangling_utility.string_encode(ip)
-            message["device_id"] = wrangling_utility.string_encode(device_id)
+            message["ip"] = wrangling_utility.mask_ip(ip)
+            message["device_id"] = wrangling_utility.mask_device(device_id)
             message["app_version"] = wrangling_utility.ver_to_int(app_version)
             # Add current date to the message
             message["create_date"] = datetime.now().strftime("%Y-%m-%d")
@@ -44,12 +44,16 @@ class ETLProcess:
         self.pg_conn.load_data_to_postgres(transformed_data)
 
     def show_loaded_data(self, limit):
-        # Retrieve and print the loaded data from PostgreSQL
+        # Retrieve and print the loaded data from PostgreSQL un-masking for easy read
         rows = self.pg_conn.print_user_logins_table(limit)
         print('\nPrinting TABLE: user_logins\n')
         print('user_id | device_type | masked_ip | masked_device_id | locale | app_version | create_date')
         for row in rows:
             row = list(row)
+            # Unmask ip for easy read
+            row[2] = wrangling_utility.unmask_ip(row[2])
+            # Unmask ip for easy read
+            row[3] = wrangling_utility.unmask_device(row[3])
             # Convert app version back to version format
             row[-2] = wrangling_utility.int_to_ver(row[-2])
             print(', '.join(map(str, row)))
@@ -69,7 +73,7 @@ def main():
     etl_process.load_data(transformed_data)
     # Show the loaded data from PostgreSQL
     print("----Showing the sample data from PostgreSQL----")
-    etl_process.show_loaded_data(5)
+    etl_process.show_loaded_data(10)
 
 if __name__ == "__main__":
     main()
